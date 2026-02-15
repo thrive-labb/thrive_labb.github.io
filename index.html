@@ -84,6 +84,7 @@
             color: var(--gray-800);
             background-color: var(--white);
             overflow-x: hidden;
+            opacity: 1;
         }
 
         .container {
@@ -217,6 +218,7 @@
             box-shadow: var(--shadow-sm);
             z-index: 1000;
             padding: var(--space-sm) 0;
+            transition: background-color var(--transition-normal), backdrop-filter var(--transition-normal);
         }
 
         .nav-container {
@@ -245,11 +247,19 @@
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
 
+        .logo-text {
+            color: var(--fern-green);
+        }
+
         .nav-menu {
             display: flex;
             list-style: none;
             gap: var(--space-lg);
             align-items: center;
+        }
+
+        .nav-item {
+            list-style: none;
         }
 
         .nav-link {
@@ -278,20 +288,6 @@
             background-color: var(--tiger-orange);
         }
 
-        .nav-link.external {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            background-color: var(--gray-100);
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius-md);
-        }
-
-        .nav-link.external:hover {
-            background-color: var(--fern-green);
-            color: var(--white);
-        }
-
         .mobile-toggle {
             display: none;
             background: none;
@@ -305,7 +301,7 @@
         /* ===== Hero Section ===== */
         .hero {
             background: linear-gradient(135deg, rgba(233, 122, 41, 0.1) 0%, rgba(79, 121, 66, 0.1) 100%);
-            padding-top: 100px;
+            padding-top: 120px;
             padding-bottom: var(--space-xxl);
             margin-bottom: var(--space-xl);
         }
@@ -313,7 +309,7 @@
         .hero-container {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 var(--space-md);
@@ -322,6 +318,7 @@
 
         .hero-content {
             flex: 1;
+            text-align: center;
         }
 
         .hero-title {
@@ -331,7 +328,11 @@
             line-height: 1.2;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: var(--space-sm);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         .hero-logo {
@@ -346,6 +347,11 @@
             color: var(--gray-700);
             margin-bottom: var(--space-lg);
             max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         .hero-tagline {
@@ -359,40 +365,17 @@
             color: var(--tiger-orange);
             border-left: 4px solid var(--fern-green);
             padding-left: var(--space-md);
+            display: inline-block;
         }
 
         .hero-buttons {
             display: flex;
             gap: var(--space-md);
             flex-wrap: wrap;
-        }
-
-        /* ===== Logo Display Section ===== */
-        .logo-display {
-            padding: var(--space-xl) 0;
-            background: linear-gradient(to bottom, var(--white), var(--gray-50));
-            text-align: center;
-        }
-
-        .logo-display-inner {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 var(--space-md);
-        }
-
-        .logo-large {
-            height: 120px;
-            width: auto;
-            object-fit: contain;
-            margin-bottom: var(--space-md);
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
-        }
-
-        .logo-caption {
-            text-align: center;
-            color: var(--gray-600);
-            font-style: italic;
-            font-size: 1.1rem;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         /* ===== About Section ===== */
@@ -526,16 +509,16 @@
             transition: all var(--transition-normal);
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
         .team-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) scale(1.02);
             box-shadow: var(--shadow-green);
         }
 
         .team-card.director-card {
             border: 3px solid var(--tiger-orange);
-            position: relative;
         }
 
         .pi-badge {
@@ -616,6 +599,7 @@
             color: var(--fern-green);
             transition: all var(--transition-fast);
             position: relative;
+            text-decoration: none;
         }
 
         .team-link:hover {
@@ -639,6 +623,7 @@
             visibility: hidden;
             transition: opacity var(--transition-fast);
             margin-bottom: 5px;
+            pointer-events: none;
         }
 
         .team-link:hover .tooltip {
@@ -706,8 +691,10 @@
             padding: var(--space-lg);
             box-shadow: var(--shadow-md);
             border-left: 5px solid var(--fern-green);
-            transition: transform var(--transition-normal);
+            transition: transform var(--transition-normal), opacity var(--transition-normal);
             position: relative;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .publication-card:hover {
@@ -759,6 +746,7 @@
             font-size: 0.9rem;
             color: var(--fern-green);
             font-weight: 500;
+            text-decoration: none;
         }
 
         .pub-link:hover {
@@ -931,6 +919,7 @@
             border-radius: 50%;
             color: var(--white);
             transition: all var(--transition-fast);
+            text-decoration: none;
         }
 
         .social-link:hover {
@@ -960,6 +949,7 @@
         .footer-link {
             color: rgba(255, 255, 255, 0.8);
             transition: color var(--transition-fast);
+            text-decoration: none;
         }
 
         .footer-link:hover {
@@ -988,6 +978,7 @@
         .legal-link {
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.9rem;
+            text-decoration: none;
         }
 
         .legal-link:hover {
@@ -1117,16 +1108,18 @@
                 <li class="nav-item"><a href="#publications" class="nav-link">Publications</a></li>
                 <li class="nav-item"><a href="#join" class="nav-link">Join Us</a></li>
                 <li class="nav-item">
-                    <a href="https://github.com/thrive-labb/thrive-labb.github.io" target="_blank">
+                    <a href="https://github.com/thrive-labb/thrive-labb.github.io" class="nav-link" target="_blank">
                         <i class="fab fa-github"></i> GitHub
-                
+                    </a>
+                </li>
                 <li class="nav-item">
-                    <a href="https://bsky.app/profile/thrivelab.bsky.social" target= "_blank">
+                    <a href="https://bsky.app/profile/thrivelab.bsky.social" class="nav-link" target="_blank">
                         <i class="fab fa-bluesky"></i> Bluesky
-                
+                    </a>
                 </li>
             </ul>
         </div>
+    </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -1620,18 +1613,26 @@
         const mobileToggle = document.querySelector('.mobile-toggle');
         const navMenu = document.querySelector('.nav-menu');
         
-        mobileToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            mobileToggle.innerHTML = navMenu.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
+        if (mobileToggle && navMenu) {
+            mobileToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const icon = mobileToggle.querySelector('i');
+                if (icon) {
+                    icon.className = navMenu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+                }
+            });
+        }
         
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                if (navMenu && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    const icon = mobileToggle?.querySelector('i');
+                    if (icon) {
+                        icon.className = 'fas fa-bars';
+                    }
+                }
             });
         });
         
@@ -1671,19 +1672,6 @@
             });
         });
         
-        // Team Card Hover Effects
-        const teamCards = document.querySelectorAll('.team-card');
-        
-        teamCards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -1705,12 +1693,14 @@
         // Navbar background on scroll
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-                navbar.style.backdropFilter = 'blur(10px)';
-            } else {
-                navbar.style.backgroundColor = 'var(--white)';
-                navbar.style.backdropFilter = 'none';
+            if (navbar) {
+                if (window.scrollY > 100) {
+                    navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                    navbar.style.backdropFilter = 'blur(10px)';
+                } else {
+                    navbar.style.backgroundColor = 'var(--white)';
+                    navbar.style.backdropFilter = 'none';
+                }
             }
         });
         
@@ -1723,7 +1713,7 @@
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 150)) {
+                if (window.scrollY >= (sectionTop - 150)) {
                     current = section.getAttribute('id');
                 }
             });
@@ -1738,27 +1728,31 @@
         
         // Initialize animations on load
         window.addEventListener('load', () => {
-            document.body.style.opacity = '1';
-            
             // Animate hero elements
             const heroTitle = document.querySelector('.hero-title');
             const heroSubtitle = document.querySelector('.hero-subtitle');
             const heroButtons = document.querySelector('.hero-buttons');
             
-            setTimeout(() => {
-                heroTitle.style.opacity = '1';
-                heroTitle.style.transform = 'translateY(0)';
-            }, 300);
+            if (heroTitle) {
+                setTimeout(() => {
+                    heroTitle.style.opacity = '1';
+                    heroTitle.style.transform = 'translateY(0)';
+                }, 300);
+            }
             
-            setTimeout(() => {
-                heroSubtitle.style.opacity = '1';
-                heroSubtitle.style.transform = 'translateY(0)';
-            }, 600);
+            if (heroSubtitle) {
+                setTimeout(() => {
+                    heroSubtitle.style.opacity = '1';
+                    heroSubtitle.style.transform = 'translateY(0)';
+                }, 600);
+            }
             
-            setTimeout(() => {
-                heroButtons.style.opacity = '1';
-                heroButtons.style.transform = 'translateY(0)';
-            }, 900);
+            if (heroButtons) {
+                setTimeout(() => {
+                    heroButtons.style.opacity = '1';
+                    heroButtons.style.transform = 'translateY(0)';
+                }, 900);
+            }
         });
     </script>
 </body>
